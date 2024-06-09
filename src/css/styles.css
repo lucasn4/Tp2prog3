@@ -1,0 +1,46 @@
+
+#contenedor{
+    text-align: center;
+    width: 1000px;
+    margin: auto;
+}
+
+#titulo{
+    text-align:"center";
+    text-decoration: chocolate underline;
+}
+.tablaarayas{
+  position: relative;
+  color: black;
+  margin-left: 5%;
+  margin-right: 5%;
+  border-bottom: 2px black solid;
+  border-top: 2px black solid;
+  border-left: 2px black solid;
+  border-right: 2px black solid;
+}
+.columna{
+  border-left: 2px black solid;
+  text-align: center;
+}
+.columna1{
+  text-align: center;
+}
+.historial{
+  text-align: center;
+  text-decoration: underline;
+}
+.boton{
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  width: 30%;
+  font-size: 20px;
+  background-color: #2973E3;
+  border-radius: 10px;
+  border: 5px  #2973E3 solid;
+  color:white;
+}
+.tablaarayas{
+  margin-top: 3%;
+}
