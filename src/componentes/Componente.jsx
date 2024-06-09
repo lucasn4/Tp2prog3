@@ -1,8 +1,10 @@
 
 import { LoadingButton } from "@mui/lab";
 import { Box, TextField, Typography } from "@mui/material";
-import { useState,useEffect } from "react";
+import { useState } from "react";
 import "../css/styles.css";
+import { ImagenSoleado, ImagenNublado, ImagenLluvia, ImagenDespejado, Lluviamoderada, Parcialmentenublado } from "../assets/imagenes";
+//import ImagenSoleado from "../assets/imagenes.js";
 
 const API_WEATHER = `http://api.weatherapi.com/v1/current.json?key=${import.meta.env.VITE_API_KEY}&lang=es&q=`;
 
@@ -72,6 +74,7 @@ const Componente = () => {
       }
 
       console.log(data);
+      cambiarfondo(data);
       guardarbd(e,data,fechaHoraFormateada);
       setWeather({
         city: data.location.name,
@@ -91,13 +94,131 @@ const Componente = () => {
     }
   };
 
+  const cambiarfondo = (data) => {
+    const oscuro = document.getElementById("oscuro");
+    console.log(data.current.condition.text);
+    if(data.current.condition.text == "Soleado"){
+      // Eliminamos el fondo existente
+    oscuro.style.background = "none";
+    // Creamos un elemento de imagen
+    const img = document.createElement("img");
+    // Establecemos la ruta de la imagen
+    img.src = ImagenSoleado;
+    // Establecemos estilos para la imagen
+    img.style.position = "absolute";
+    img.style.top = "0";
+    img.style.left = "0";
+    img.style.width = "100%";
+    img.style.height = "100%"; // Añadimos esta línea para que la imagen ocupe el 100% del contenedor
+    img.style.objectFit = "cover"; // Añadimos esta línea para que la imagen se ajuste al contenedor sin perder su relación de aspecto
+    img.style.zIndex = "-1";
+    // Agregamos la imagen al contenedor "oscuro"
+    oscuro.appendChild(img);
+    // Establecemos otros estilos para el contenedor // Ajustar según sea necesario
+    oscuro.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+    } else if(data.current.condition.text == "Despejado"){
+      
+      // Eliminamos el fondo existente
+    oscuro.style.background = "none";
+    // Creamos un elemento de imagen
+    const img = document.createElement("img");
+    // Establecemos la ruta de la imagen
+    img.src = ImagenDespejado;
+    // Establecemos estilos para la imagen
+    img.style.position = "absolute";
+    img.style.top = "0";
+    img.style.left = "0";
+    img.style.width = "100%";
+    img.style.height = "100%"; // Añadimos esta línea para que la imagen ocupe el 100% del contenedor
+    img.style.objectFit = "cover"; // Añadimos esta línea para que la imagen se ajuste al contenedor sin perder su relación de aspecto
+    img.style.zIndex = "-1";
+    // Agregamos la imagen al contenedor "oscuro"
+    oscuro.appendChild(img);
+    // Establecemos otros estilos para el contenedor // Ajustar según sea necesario
+    oscuro.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+    } else if(data.current.condition.text == "Nublado" || data.current.condition.text == "Neblina"){
+      // Eliminamos el fondo existente
+    oscuro.style.background = "none";
+    // Creamos un elemento de imagen
+    const img = document.createElement("img");
+    // Establecemos la ruta de la imagen
+    img.src = ImagenNublado;
+    // Establecemos estilos para la imagen
+    img.style.position = "absolute";
+    img.style.top = "0";
+    img.style.left = "0";
+    img.style.width = "100%";
+    img.style.height = "100%"; // Añadimos esta línea para que la imagen ocupe el 100% del contenedor
+    img.style.objectFit = "cover"; // Añadimos esta línea para que la imagen se ajuste al contenedor sin perder su relación de aspecto
+    img.style.zIndex = "-1";
+    // Agregamos la imagen al contenedor "oscuro"
+    oscuro.appendChild(img);
+    // Establecemos otros estilos para el contenedor // Ajustar según sea necesario
+    oscuro.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+  } else if(data.current.condition.text == "Parcialmente nublado"){
+    
+      // Eliminamos el fondo existente
+      oscuro.style.background = "none";
+      // Creamos un elemento de imagen
+      const img = document.createElement("img");
+      // Establecemos la ruta de la imagen
+      img.src = Parcialmentenublado;
+      // Establecemos estilos para la imagen
+      img.style.position = "absolute";
+      img.style.top = "0";
+      img.style.left = "0";
+      img.style.width = "100%";
+      img.style.height = "100%"; // Añadimos esta línea para que la imagen ocupe el 100% del contenedor
+      img.style.objectFit = "cover"; // Añadimos esta línea para que la imagen se ajuste al contenedor sin perder su relación de aspecto
+      img.style.zIndex = "-1";
+      // Agregamos la imagen al contenedor "oscuro"
+      oscuro.appendChild(img);
+      // Establecemos otros estilos para el contenedor // Ajustar según sea necesario
+      oscuro.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+      }else if(data.current.condition.text == "Lluvia moderada a intervalos" || data.current.condition.text == "Lluvias leves" || data.current.condition.text == "Ligeras lluvias"){
+      // Eliminamos el fondo existente
+    oscuro.style.background = "none";
+    // Creamos un elemento de imagen
+    const img = document.createElement("img");
+    // Establecemos la ruta de la imagen
+    img.src = Lluviamoderada;
+    // Establecemos estilos para la imagen
+    img.style.position = "absolute";
+    img.style.top = "0";
+    img.style.left = "0";
+    img.style.width = "100%";
+    img.style.height = "100%"; // Añadimos esta línea para que la imagen ocupe el 100% del contenedor
+    img.style.objectFit = "cover"; // Añadimos esta línea para que la imagen se ajuste al contenedor sin perder su relación de aspecto
+    img.style.zIndex = "-1";
+    // Agregamos la imagen al contenedor "oscuro"
+    oscuro.appendChild(img);
+    // Establecemos otros estilos para el contenedor // Ajustar según sea necesario
+    oscuro.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+  } else if(data.current.condition.text == "Lluvias" || data.current.condition.text == "Lluvia fuerte" || data.current.condition.text == "Lluvia muy fuerte" || data.current.condition.text == "Tormenta" || data.current.condition.text == "Lluvia intensa"){
+  
+      // Eliminamos el fondo existente
+      oscuro.style.background = "none";
+      // Creamos un elemento de imagen
+      const img = document.createElement("img");
+      // Establecemos la ruta de la imagen
+      img.src = ImagenLluvia;
+      // Establecemos estilos para la imagen
+      img.style.position = "absolute";
+      img.style.top = "0";
+      img.style.left = "0";
+      img.style.width = "100%";
+      img.style.height = "100%"; // Añadimos esta línea para que la imagen ocupe el 100% del contenedor
+      img.style.objectFit = "cover"; // Añadimos esta línea para que la imagen se ajuste al contenedor sin perder su relación de aspecto
+      img.style.zIndex = "-1";
+      // Agregamos la imagen al contenedor "oscuro"
+      oscuro.appendChild(img);
+      // Establecemos otros estilos para el contenedor // Ajustar según sea necesario
+      oscuro.style.backgroundColor = "rgba(0, 0, 0, 0.5)";    
+  } 
+  }
 
   const [documentos, setDocumentos] = useState(null);
 
-  // Estado para almacenar el documento de la API
-  //const [documento, setDocumento] = useState(null);
-  // Función para manejar el envío del formulario.
-  
   // Función para cargar el documento al renderizar el componente
   
     const fetchDocumentos = async (fechaHoraFormateada) => {
@@ -124,8 +245,15 @@ const verbd = async (e,fechaHoraFormateada) => {
 
   return (
     <>
+    <style>
+      {`
+        body {
+        }
+      `}
+    </style>
+    <div id="oscuro">
     <div id="contenedor">
-      <h1 id="titulo"> APP CLIMA </h1>
+      <h1  className="letras"id="titulo"> APP CLIMA </h1>
       <Box
         sx={{
           display: "grid",
@@ -139,6 +267,7 @@ const verbd = async (e,fechaHoraFormateada) => {
         onSubmit={onSubmit}
       >
         <TextField
+        className="letras"
           id="city"
           label="Ciudad"
           variant="outlined"
@@ -168,7 +297,7 @@ const verbd = async (e,fechaHoraFormateada) => {
             textAlign: "center"
           }}
         >
-          <Typography variant="h4" component="h2">
+          <Typography className="letras" variant="h4" component="h2">
             {weather.city}, {weather.country}
           </Typography>
           <Box
@@ -177,20 +306,21 @@ const verbd = async (e,fechaHoraFormateada) => {
             src={weather.icon}
             sx={{ margin: "0 auto" }}
           />
-          <Typography variant="h5" component="h3">
+          <Typography  className="letras"  variant="h5" component="h3">
             {weather.temperature} °C
           </Typography>
-          <Typography variant="h6" component="h4">
+          <Typography className="letras" variant="h6" component="h4">
             {weather.conditionText}
           </Typography>
-          <Typography variant="h6" component="h4">Fecha y hora de la localidad: 
+          <Typography className="letras" variant="h6" component="h4">Fecha y hora de la localidad: 
             {weather.horalocal}
           </Typography>
-          <Typography variant="h6" component="h4">Fecha y hora de busqueda: 
+          <Typography className="letras" variant="h6" component="h4">Fecha y hora de busqueda: 
             {weather.fecha}
           </Typography>
         </Box>
       )}
+    </div>
 
       <Typography textAlign="center" sx={{ mt: 2, fontSize: "10px" }}>
         Powered by:{" "}
@@ -198,9 +328,9 @@ const verbd = async (e,fechaHoraFormateada) => {
           WeatherAPI.com
         </a>
       </Typography>
-    </div>
 
 
+      </div>
     <div>
             <h1 className='historial'>HISTORIAL DE BUSQUEDA</h1>
             <button className='boton' onClick={verbd}>Actualizar historial</button>
