@@ -175,7 +175,7 @@ const Componente = () => {
       oscuro.appendChild(img);
       // Establecemos otros estilos para el contenedor // Ajustar según sea necesario
       oscuro.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
-      }else if(data.current.condition.text == "Lluvia moderada a intervalos" || data.current.condition.text == "Lluvias leves" || data.current.condition.text == "Ligeras lluvias"){
+      }else if(data.current.condition.text == "Lluvia moderada a intervalos" || data.current.condition.text == "Ligeras precipitaciones de aguanieve" ||data.current.condition.text == "Lluvias leves" || data.current.condition.text == "Ligeras lluvias"){
       // Eliminamos el fondo existente
     oscuro.style.background = "none";
     // Creamos un elemento de imagen
